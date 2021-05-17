@@ -52,17 +52,17 @@ function renderImg(){
 
 limdEl.setAttribute('src', products[ leftImgIndex].source);
 limdEl.setAttribute('title', products[ leftImgIndex].source)
-products[ leftImgIndex].viwe++;
+products[ leftImgIndex].views++;
 
 
 mimdEl.setAttribute('src', products[ midImgIndex].source);
 mimdEl.setAttribute('title', products[ midImgIndex].source)
-products[ midImgIndex ].viwe++;
+products[ midImgIndex ].views++;
 
 
 rimdEl.setAttribute('src', products[ rightImgIndex].source);
 rimdEl.setAttribute('title', products[ rightImgIndex].source)
-products[ rightImgIndex].viwe++;
+products[ rightImgIndex].views++;
 
 
 attmptsE1.textContent = attmpet;
