@@ -15,6 +15,26 @@ function ProuductImage(productName) {
     this.views = 0;
     products.push(this);
     productsA.push(  this.productName);
+    
+
+}
+
+function setting(){
+    let data = JSON.stringify(products);
+    //console.log(data);
+    localStorage.setItem('product', data);
+}
+
+function gitting(){
+
+    let stringObj = localStorage.getItem('product');
+    let normalObj = JSON.parse(stringObj);
+    console.log(normalObj);
+    if(normalObj !== null){
+
+        products = normalObj;
+    }
+  renderImg();
 }
 
 let productImg = ['bag.jpg', 'banana.jpg', 'bathroom.jpg', 'boots.jpg', 'breakfast.jpg', 'bubblegum.jpg', 'chair.jpg', 'cthulhu.jpg', 'dog-duck.jpg', 'dragon.jpg', 'pen.jpg', 'pet-sweep.jpg', 'scissors.jpg', 'shark.jpg', 'sweep.png', 'tauntaun.jpg', 'unicorn.jpg', 'water-can.jpg', 'wine-glass.jpg']
@@ -74,7 +94,7 @@ products[ rightImgIndex].views++;
 attmptsE1.textContent = attmpet;
 
 
-console.log(z);
+//console.log(z);
 
 //while ( z.includes(leftImgIndex) || z.includes( midImgIndex) || z.includes( rightImgIndex) ) {
 
@@ -112,26 +132,43 @@ else if
         products[rightImgIndex ].clicks++;
 }
 
+setting();
+
 renderImg();
     }
 
+  
+
+
     else {
-        let ulEl = document.getElementById('results');
-        let liEl;
-        for (let i = 0; i < products.length; i++) {
-            liEl = document.createElement('li');
-            ulEl.appendChild(liEl);
-            liEl.textContent = `${products[i].productName} has ${products[i].views} views and has ${products[i].clicks} clicks.`
-        
-        viewsA.push(products[i].views);
-        clicksA.push(products[i].clicks);
-    }
+        let buttonEl = document.getElementById('bt');
+        buttonEl.addEventListener('click', viewresult ) ;
+
         limdEl.removeEventListener('click', handelClicks);
         mimdEl.removeEventListener('click', handelClicks);
         rimdEl.removeEventListener('click', handelClicks)
-        chartRender();
 
 }
+
+
+function viewresult(){
+
+    let ulEl = document.getElementById('results');
+    let liEl;
+    for (let i = 0; i < products.length; i++) {
+        liEl = document.createElement('li');
+        ulEl.appendChild(liEl);
+        liEl.textContent = `${products[i].productName} has ${products[i].views} views and has ${products[i].clicks} clicks.`
+    
+    viewsA.push(products[i].views);
+    clicksA.push(products[i].clicks);
+}
+    
+    chartRender();
+
+}
+
+
 
 }
 function chartRender(){
@@ -181,3 +218,5 @@ var myChart = new Chart(ctx, {
 
 
 }
+
+gitting();
